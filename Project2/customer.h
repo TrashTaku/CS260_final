@@ -11,15 +11,15 @@ private:
 	string fname, lname, address, phone, email;
 public:
     Customer();
-    Customer(string fn, string ln, string addr, string ph, string em);
+    Customer(string _fname, string _lname, string _address, string _phone, string _email);
 
-    void setFirstName(string fn);
-    void setLastName(string ln);
-    void setAddress(string addr);
-    void setPhone(string ph);
-    void setEmail(string em);
+    void setFirstName(string _fname);
+    void setLastName(string _lname);
+    void setAddress(string _address);
+    void setPhone(string _phone);
+    void setEmail(string _email);
 
-    void setAll(string fn, string ln, string addr, string ph, string em);
+    void setAll(string _fname, string _lname, string _address, string _phone, string _email);
 
     string getFirstName();
     string getLastName();
