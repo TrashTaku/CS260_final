@@ -9,7 +9,13 @@ Customer::Customer(){
 	phone = "";
 	email = "";
 }
-Customer(string _fname, string _lname, string _address, string _phone, string _email);
+Customer::Customer(string _fname, string _lname, string _address, string _phone, string _email) {
+	fname = _fname;
+	lname = _lname;
+	address = _address;
+	phone = _phone;
+
+}
 
 void setFirstName(string _fname);
 void setLastName(string _lname);
