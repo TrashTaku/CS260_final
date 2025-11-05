@@ -5,15 +5,25 @@ include "customer.h"
 using namespace std;
 
 Account::Account() {
+	accountcustomer = nullptr
 	id = 0;
 	balance = 0.0;
 	withdrawalcounter = 0;
 	depositcounter = 0;
 	accountcustomer = nullptr;
-}
+}//make sure to use if else for customer ptr
 Account::Account(int _id, double _balance, int _withdrawalcounter, int _depositcounter,
 	Customer* _accountcustomer) {
-	this->id = _id; //? should i use this->
+	id = _id; //? should i use this->
+	balance = _balance;
+	withdrawalcounter = _withdrawalcounter;
+	depositcounter = _depositcounter;
+	if (_accountcustomer != nullptr) {
+		accountcustomer = _accountcustomer;
+	}
+	else {
+		cout << "Invalid customer pointer. Setting accountcustomer to nullptr." << endl;
+	}
 
 }
 void Account::setID(int _id) {
@@ -72,6 +82,8 @@ double Account::withdraw(double amount) {
 	}
 	return balance;
 }
+
+//probably should change format to columns
 void Account::displayAccountInfo() const {
 	cout << fixed << setprecision(2);
 	cout << "Account ID: " << id << endl;
