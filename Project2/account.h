@@ -21,6 +21,8 @@ public:
 	void setWithdrawalCounter(int _withdrawalcounter);
 	void setDepositCounter(int _depositcounter);
 	void setAccountCustomer(Customer* _accountcustomer);
+	void setall(int _id, double _balance, int _withdrawalcounter, int _depositcounter,
+		Customer* _accountcustomer);
 
 	int getID() const;
 	double getBalance() const;
