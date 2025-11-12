@@ -15,3 +15,35 @@ CheckingAcc::CheckingAcc (int _id, double _balance, int _withdrawalcounter,
 
 }
 
+void CheckingAcc::setOverdraftLimit(double _overdraftlimit) {
+	overdraftlimit = _overdraftlimit;
+}
+
+double CheckingAcc::getOverdraftLimit() const {
+	return overdraftlimit;
+}
+
+void CheckingAcc::withdrawmoney(double amount) {
+
+	if (amount <= 0) {
+		cout << "Invalid amount. Withdrawal amount must be positive." << endl;
+	}
+	
+	if (amount <= balance) {
+		balance = balance - amount;
+	}
+	else if (amount>balance){
+		if (amount < balance + overdraftlimit) {
+			double diffamount = balance - amount;
+			diffamount = abs(diffamount); // https://www.w3schools.com/cpp/ref_math_abs.asp
+			if (diffamount > overdraftlimit) {
+				cout << "withdrawal amount exceeds overdraft limit. Transaction cancelled." << endl;
+			}
+			else{
+				balance = balance - amount;
+			}
+	}
+		else 
+	}
+}
+
