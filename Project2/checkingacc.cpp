@@ -43,7 +43,9 @@ void CheckingAcc::withdrawmoney(double amount) {
 				balance = balance - amount;
 			}
 	}
-		else 
+		else {
+			cout << "withdrawal amount exceeds overdraft limit. Transaction cancelled." << endl;
+		}
 	}
 }
 

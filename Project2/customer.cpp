@@ -60,9 +60,5 @@ string getEmail(); {
 }
 
 void printInfo() {
-	cout << "first name: " << fname << endl;
-	cout << "last name: " << lname << endl;
-	cout << "address: " << address << endl;
-	cout << "phone: " << phone << endl;
-	cout << "email: " << email << endl;
+	cout << setw(20) << fname << "|" << setw(20) << lname << "|" << setw(20) << address << "|" << setw(20) << phone << "|" << setw(20) << email << "|";
 }
