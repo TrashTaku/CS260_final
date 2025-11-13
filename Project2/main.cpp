@@ -134,16 +134,116 @@ int main() {
 						cout << "Enter a account ID: ";
 						int accID;
 						cin >> accID;
+						for (int i = 0; i < size; i++) {
+							if (checkingAccounts[i].getID() == accID) {
+								cout << "Would you like to withdraw or deposit? (w/d): ";
+								char transType;
+								cin >> transType;
+								if (transType == 'w' || transType == 'W') {
+									cout << "Enter withdrawal amount: ";
+									double amount;
+									cin >> amount;
+									checkingAccounts[i].withdrawmoney(amount);
+									cout << "New balance: $" << checkingAccounts[i].getBalance() << endl;
+								}
+								else if (transType == 'd' || transType == 'D') {
+									cout << "Enter deposit amount: ";
+									double amount;
+									cin >> amount;
+									checkingAccounts[i].deposit(amount);
+									cout << "New balance: $" << checkingAccounts[i].getBalance() << endl;
+								}
+							}
+							else if (accID != checkingAccounts[size - 1].getID()) {
+								cout << "Account with ID " << accID << " not found." << endl;
+								cout << "Enter a account ID: ";
+								cin >> accID;
+							}
 
-
+						}
 					}
 					else if (accType == 's' || accType == 'S') {
 						// Savings account balance modification logic
-					}
+						cout << "Enter a account ID: ";
+						int accID;
+						cin >> accID;
+						for (int i = 0; i < size; i++) {
+							if (savingsAccounts[i].getID() == accID) {
+								cout << "Would you like to withdraw or deposit? (w/d): ";
+								char transType;
+								cin >> transType;
+								if (transType == 'w' || transType == 'W') {
+									cout << "Enter withdrawal amount: ";
+									double amount;
+									cin >> amount;
+									savingsAccounts[i].withdraw(amount);
+									cout << "New balance: $" << checkingAccounts[i].getBalance() << endl;
+								}
+								else if (transType == 'd' || transType == 'D') {
+									cout << "Enter deposit amount: ";
+									double amount;
+									cin >> amount;
+									checkingAccounts[i].deposit(amount);
+									cout << "New balance: $" << checkingAccounts[i].getBalance() << endl;
+								}
+							}
+							else if (accID != savingsAccounts[size - 1].getID()) {
+								cout << "Account with ID " << accID << " not found." << endl;
+								cout << "Enter a account ID: ";
+								cin >> accID;
+							}
+						}
 
+					}
 				}
 				else if (modifyChoice == 2) {
 					// Customer information modification logic
+					cout << "Enter customer phone number to modify information: ";
+					string phone;
+					cin >> phone;
+
+					cout << "Which information would you like to modify?\n";
+					cout << "1. First Name\n";
+					cout << "2. Last Name\n";
+					cout << "3. Address\n";
+					cout << "4. Phone\n";
+					cout << "5. Email\n";
+					int infoChoice;
+					cin >> infoChoice;
+					if (infoChoice == 1) {
+						cout << "Enter new first name: ";
+						string newFName;
+						cin >> newFName;
+						for (int i = 0; i < size; i++) {
+							if (customers[i].getPhone() == phone) {
+								customers[i].setFirstName(newFName);
+								cout << "First name updated successfully." << endl;
+								break;
+							}
+							else if (phone != customers[size - 1].getPhone()) {
+								cout << "Customer with phone number " << phone << " not found." << endl;
+								cout << "Enter customer phone number to modify information: ";
+								cin >> phone;
+							}
+						}
+					}
+					if (infoChoice == 2) {
+						cout << "Enter new last name: ";
+						string newLName;
+						cin >> newLName;
+						for (int i = 0; i < size; i++) {
+							if (customers[i].getPhone() == phone) {
+								customers[i].setLastName(newLName);
+								cout << "Last name updated successfully." << endl;
+								break;
+							}
+							else if (phone != customers[size - 1].getPhone()) {
+								cout << "Customer with phone number " << phone << " not found." << endl;
+								cout << "Enter customer phone number to modify information: ";
+								cin >> phone;
+							}
+						}
+					}
 				}
 				else if (modifyChoice == 3) {
 					// Interest rate/overdraft limit modification logic
@@ -168,6 +268,7 @@ int main() {
 	default:
 		break;
 	}
+				if 
 
 
 
