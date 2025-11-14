@@ -18,25 +18,25 @@ Customer::Customer(string _fname, string _lname, string _address, string _phone,
 
 }
 
- void setFirstName(string _fname); {
+ void Customer:: setFirstName(string _fname); {
 	fname = _fname;
 }
- void setLastName(string _lname); {
+ void Customer:: setLastName(string _lname); {
 	 lname = _lname;
 }
-void setAddress(string _address);
+void Customer::setAddress(string _address);
 {
 	address = _address;
 }
-void setPhone(string _phone);
+void Customer::setPhone(string _phone);
 {
 	phone = _phone;
 }
-void setEmail(string _email); {
+void Customer:: setEmail(string _email); {
 	email = _email;
 }
 
-void setAll(string _fname, string _lname, string _address, string _phone, string _email) {
+void Customer::setAll(string _fname, string _lname, string _address, string _phone, string _email) {
 	fname = _fname;
 	lname = _lname;
 	address = _address;
@@ -44,21 +44,23 @@ void setAll(string _fname, string _lname, string _address, string _phone, string
 	email = _email;
 }
 
-string getFirstName();
+string Customer:: getFirstName();
 { return fname; }
-string getLastName(); {
+string Customer:: getLastName(); {
 	return lname;
 }
-string getAddress(); {
+string Customer:: getAddress(); {
 	return address;
 }
-string getPhone(); {
+string Customer::getPhone(); {
 	return phone;
 }
-string getEmail(); {
+string Customer::getEmail(); {
 	return email;
 }
 
-void printInfo() {
-	cout << setw(20) << fname << "|" << setw(20) << lname << "|" << setw(20) << address << "|" << setw(20) << phone << "|" << setw(20) << email << "|";
+void Customer::printInfo() {
+	cout << setw(20) << fname << "|"
+		<< setw(20) << lname << "|" << setw(20) << address 
+		<< "|" << setw(20) << phone << "|" << setw(20) << email << "|";
 }

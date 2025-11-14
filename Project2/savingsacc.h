@@ -17,9 +17,7 @@ public :
 
 	void setAll(int _id, double _balance, int _withdrawalcounter,
 		int _depositcounter,
-		Customer* _accountcustomer, double interestrate) {
-		Account::setAll(_id, _balance, _withdrawalcounter, _depositcounter, _accountcustomer);
-	}
+		Customer* _accountcustomer, double interestrate);
 	double getInterestrate() const;
 		void setInterestrate(double interestrate);
 		void payInterest();

@@ -1,16 +1,15 @@
 #include <iostream>
 #include <iomanip>
 #include "account.h"
-include "customer.h"
+#include "customer.h"
 using namespace std;
 
 Account::Account() {
-	accountcustomer = nullptr
+	accountcustomer = nullptr;
 	id = 0;
 	balance = 0.0;
 	withdrawalcounter = 0;
 	depositcounter = 0;
-	accountcustomer = nullptr;
 }//make sure to use if else for customer ptr
 Account::Account(int _id, double _balance, int _withdrawalcounter, int _depositcounter,
 	Customer* _accountcustomer) {

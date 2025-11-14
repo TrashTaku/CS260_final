@@ -12,14 +12,14 @@ int main() {
 	cout << "Enter number of customers: ";
 	cin >> size;
 
-	for (size <= 0) {
+	while (size <= 0) {
 		cout << "Invalid size." << endl;
 		cout << "Enter number of customers: ";
 		cin >> size;
 	}
 
 	
-	Customer* customers = new customerList[size];
+	Customer* customers = new Customer[size];
 	SavingsAcc* savingsAccounts = new SavingsAcc[size]; /*maybe we should dynamically allocate accounts too*/
 	CheckingAcc* checkingAccounts = new CheckingAcc[size];
 
@@ -286,7 +286,7 @@ int menudisplay() {
 	cout << "6. Exit\n";
 	int choice;
 	cin >> choice;
-	for (choice < 1 || choice > 6) {
+	while (choice < 1 || choice > 6) {
 		cout << "Invalid choice. Please select a valid option (1-5): ";
 		cin >> choice;
 	}

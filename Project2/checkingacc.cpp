@@ -24,6 +24,7 @@ double CheckingAcc::getOverdraftLimit() const {
 }
 
 void CheckingAcc::withdrawmoney(double amount) {
+	double balance = Account::getBalance();
 
 	if (amount <= 0) {
 		cout << "Invalid amount. Withdrawal amount must be positive." << endl;
@@ -31,6 +32,7 @@ void CheckingAcc::withdrawmoney(double amount) {
 	
 	if (amount <= balance) {
 		balance = balance - amount;
+		Account::withdraw(amount);
 	}
 	else if (amount>balance){
 		if (amount < balance + overdraftlimit) {
@@ -41,6 +43,7 @@ void CheckingAcc::withdrawmoney(double amount) {
 			}
 			else{
 				balance = balance - amount;
+				Account::withdraw(amount);
 			}
 	}
 		else {
@@ -49,3 +52,10 @@ void CheckingAcc::withdrawmoney(double amount) {
 	}
 }
 
+void CheckingAcc::setAll(int _id, double _balance, int _withdrawalcounter,
+	int _depositcounter,
+	Customer* _accountcustomer, double _overdraftlimit) {
+	Account::setAll(_id, _balance, _withdrawalcounter,
+		_depositcounter, _accountcustomer);
+	overdraftlimit = _overdraftlimit;
+}
