@@ -21,7 +21,7 @@
     <ClCompile Include="customer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="account(generic).cpp">
+    <ClCompile Include="account.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="checkingacc.cpp">

@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="account(generic).cpp" />
+    <ClCompile Include="account.cpp" />
     <ClCompile Include="checkingacc.cpp" />
     <ClCompile Include="customer.cpp" />
     <ClCompile Include="main.cpp" />

@@ -1,61 +1,59 @@
 #include <iostream>
 #include "checkingacc.h"
-#include"customer.h"
-#include <string>
+#include "customer.h"
+
 using namespace std;
 
 CheckingAcc::CheckingAcc() {
-	overdraftlimit = 0.0;
+    overdraftlimit = 0.0;
 }
 
-CheckingAcc::CheckingAcc (int _id, double _balance, int _withdrawalcounter,
-	int _depositcounter, Customer* _accountcustomer, double _overdraftlimit) :
-	Account(_id, _balance, _withdrawalcounter, _depositcounter, _accountcustomer) {
-	overdraftlimit = _overdraftlimit;
-
+CheckingAcc::CheckingAcc(int _id, double _balance, int _withdrawalcounter,
+    int _depositcounter, Customer* _accountcustomer,
+    double _overdraftlimit)
+    : Account(_id, _balance, _withdrawalcounter, _depositcounter, _accountcustomer) {
+    overdraftlimit = _overdraftlimit;
 }
 
 void CheckingAcc::setOverdraftLimit(double _overdraftlimit) {
-	overdraftlimit = _overdraftlimit;
+    overdraftlimit = _overdraftlimit;
 }
 
 double CheckingAcc::getOverdraftLimit() const {
-	return overdraftlimit;
+    return overdraftlimit;
 }
 
 void CheckingAcc::withdrawmoney(double amount) {
-	double balance = Account::getBalance();
+    double balance = Account::getBalance();
 
-	if (amount <= 0) {
-		cout << "Invalid amount. Withdrawal amount must be positive." << endl;
-	}
-	
-	if (amount <= balance) {
-		balance = balance - amount;
-		Account::withdraw(amount);
-	}
-	else if (amount>balance){
-		if (amount < balance + overdraftlimit) {
-			double diffamount = balance - amount;
-			diffamount = abs(diffamount); // https://www.w3schools.com/cpp/ref_math_abs.asp
-			if (diffamount > overdraftlimit) {
-				cout << "withdrawal amount exceeds overdraft limit. Transaction cancelled." << endl;
-			}
-			else{
-				balance = balance - amount;
-				Account::withdraw(amount);
-			}
-	}
-		else {
-			cout << "withdrawal amount exceeds overdraft limit. Transaction cancelled." << endl;
-		}
-	}
+    if (amount <= 0) {
+        cout << "Invalid amount. Withdrawal amount must be positive." << endl;
+        return;
+    }
+
+    if (amount <= balance) {
+        // Normal withdraw
+        Account::withdraw(amount);
+    }
+    else {
+        // Allow overdraft up to limit
+        double deficit = amount - balance;
+        if (deficit <= overdraftlimit) {
+            // withdraw everything that's in the account
+            Account::withdraw(balance);   // sets balance to 0 and increments counter
+            // represent overdraft as negative balance
+            Account::setBalance(Account::getBalance() - deficit);
+            cout << "Overdraft used: " << deficit << endl;
+        }
+        else {
+            cout << "Withdrawal amount exceeds overdraft limit. Transaction cancelled." << endl;
+        }
+    }
 }
 
 void CheckingAcc::setAll(int _id, double _balance, int _withdrawalcounter,
-	int _depositcounter,
-	Customer* _accountcustomer, double _overdraftlimit) {
-	Account::setAll(_id, _balance, _withdrawalcounter,
-		_depositcounter, _accountcustomer);
-	overdraftlimit = _overdraftlimit;
+    int _depositcounter, Customer* _accountcustomer,
+    double _overdraftlimit) {
+    Account::setAll(_id, _balance, _withdrawalcounter, _depositcounter, _accountcustomer);
+    overdraftlimit = _overdraftlimit;
 }
