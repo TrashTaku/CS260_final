@@ -27,7 +27,7 @@
     <ClCompile Include="checkingacc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="savingacc.cpp">
+    <ClCompile Include="savingsacc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
